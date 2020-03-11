@@ -20,6 +20,9 @@ class TodoForm extends React.Component {
   handleSubmit = event => {
       event.preventDefault();
       this.props.addTodo(this.state.task);
+      this.setState({
+          task: ''
+      });
   }
 
   render() {
@@ -27,7 +30,7 @@ class TodoForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
             <input type='text' placeholder='add todo..' value={this.state.task} onChange={this.handleChanges}/>
             <button>Add</button>
-            <button>Clear Completed</button>
+            <button onClick={this.props.clearCompleted}>Clear Completed</button>
         </form>
     );
   }
